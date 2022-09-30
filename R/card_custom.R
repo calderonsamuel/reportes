@@ -34,30 +34,20 @@ card_task <- function(id = NULL) {
     bslib::card(
         card_header(
             tags$a(
-                class = "btn",
+                class = "btn card-header-toggle",
                 style = "width:100%; padding: 0;",
+                id = id,
                 tags$div(
                     style = "display: grid; grid-template-columns: auto auto; gap: 5px;",
-                    id = id,
                     tags$div(tags$p("Descripción de tarea", style = "margin-bottom: 0rem; text-align: left;")),
                     tags$div(tags$p(icon("bars"), style = "margin-bottom: 0rem; text-align: right;"))
-                    # tags$ul(
-                    #     class = "navbar-nav",
-                    #     tags$li("Descripción de tarea", class = "nav-item"),
-                    #     tags$li(icon("bars"), class = "nav-item")
-                    # )
                 ),
-                # tags$span(
-                #     id = id,
-                #     tags$div(
-                #         tags$p("Descripción de tarea", style = "margin-bottom: 0rem")
-                #     ),
-                #     tags$p(icon("bars"), style = "float: right; display: block; margin-bottom: 0rem")
-                # ),
             )
         ),
         bslib::card_body(
             gap = 0,
+            class = "card-bodyid",
+            style = "display: none !important;",
             inline_description("user", "Nombre de encargado"),
             inline_description("book-reader", "Nombre de responsable"),
             inline_description("calendar-day", "31/12/2022"),
@@ -67,10 +57,11 @@ card_task <- function(id = NULL) {
 }
 
 inline_description <- function(icon_name, label) {
-    tags$span(
-        icon(icon_name, style = "display: inline-block;"),
-        tags$p(label, style = "display: inline-block;")
-    ) |> suppressMessages()
+    tags$div(
+        style = "display: grid; grid-template-columns: 20px auto; gap: 5px; width: 100%;",
+        tags$div(tags$p(icon(icon_name), style = "margin-bottom: 0rem; text-align: left;")),
+        tags$div(tags$p(label, style = "margin-bottom: 0rem; text-align: left;"))
+    )|> suppressMessages()
 }
 
 card_custom <- function(...) {
