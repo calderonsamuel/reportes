@@ -13,18 +13,17 @@ mod_secure_ui <- function(id) {
     tagList(
         bslib::page_navbar(
             id = "page",
+            bg = "#2c3e50",
             title = "app test",
-            theme = bslib::bs_theme(version = 5),
+            theme = bslib::bs_theme(
+                version = 5,
+                bootswatch = "sandstone"
+            ),
             bslib::nav_spacer(),
             bslib::nav(
                 title = "Reporte", 
                 icon= icon("list-check"),
-                fluidRow(
-                    col_3(card_testing()),
-                    col_3(card_testing(), card_testing()),
-                    col_3(card_testing()),
-                    col_3(card_testing())
-                )
+                mod_progressPage_ui(ns("progressPage_1"))
             ),
             bslib::nav(
               title = icon("gear"),
@@ -40,7 +39,8 @@ mod_secure_ui <- function(id) {
 mod_secure_server <- function(id) {
     moduleServer(id, function(input, output, session) {
         ns <- session$ns
-
+        
+        mod_progressPage_server("progressPage_1")
     })
 }
 
