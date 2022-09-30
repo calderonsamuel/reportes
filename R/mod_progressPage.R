@@ -28,7 +28,9 @@ mod_progressPage_ui <- function(id) {
 mod_progressPage_server <- function(id) {
     moduleServer(id, function(input, output, session) {
         ns <- session$ns
-        
+        session$sendCustomMessage(
+            type = "send-notice", message = "Hi there!"
+        )
     })
 }
 
