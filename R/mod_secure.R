@@ -17,7 +17,10 @@ mod_secure_ui <- function(id) {
             title = "app test",
             theme = bslib::bs_theme(
                 version = 5,
-                bootswatch = "sandstone"
+                bootswatch = "sandstone",
+                "body-bg" = "#f1ecd9",
+                "card-bg" = "#fff9e4",
+                # "card-border-color" = "rgba(175, 167, 155 / 75%)"
             ),
             bslib::nav_spacer(),
             bslib::nav(
